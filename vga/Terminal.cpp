@@ -2,7 +2,7 @@
 
 #include "../lib/String.hpp"
 
-#include "../lib/Memory.hpp"
+#include "../krnl/IO.hpp"
 
 namespace cos
 {
@@ -150,10 +150,10 @@ namespace cos
 		{
 			uint16 idx = row * WIDTH + column;
 
-			mem::outport(0x3d4, 14);
-			mem::outport(0x3d5, idx >> 8);
-			mem::outport(0x3d4, 15);
-			mem::outport(0x3d5, idx);
+			io::outport(0x3d4, 14);
+			io::outport(0x3d5, idx >> 8);
+			io::outport(0x3d4, 15);
+			io::outport(0x3d5, idx);
 		}
 	}
 }
