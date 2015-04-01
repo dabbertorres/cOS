@@ -34,12 +34,12 @@ stack_top:
 _start:
 	# Welcome to kernel mode!
 
-	# init global constructors
-	call _init
-
 	# To set up a stack, we simply set the esp register to point to the top of
 	# our stack (as it grows downwards).
 	movl $stack_top, %esp
+
+	# init global constructors
+	call _init
 
 	# We are now ready to actually execute C code.
 	call kernelMain
