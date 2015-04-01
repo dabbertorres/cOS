@@ -15,25 +15,38 @@
 #include "vga/Color.hpp"
 #include "vga/Terminal.hpp"
 
+#include "krnl/Interrupt.hpp"
+#include "krnl/CpuID.hpp"
+
 NO_NAME_MANGLE
 void kernelMain()
 {
 	cos::vga::Terminal terminal(80, 25);
 
-	terminal.putChar('h');
-	terminal.putChar('i');
-	terminal.putChar('!');
+	terminal.writeString("hi!");
 
 	terminal.writeString(" Hello world! ");
-	
+
 	terminal.setColor(cos::vga::Color::LightGreen, cos::vga::Color::DarkGrey);
 
-	terminal.putChar('s');
-	terminal.putChar('o');
-	terminal.putChar('?');
+	terminal.writeString("so?");
+
+	terminal.setColor(cos::vga::Color::LightRed, cos::vga::Color::Cyan);
 
 	for(int i = 0; i < 100; i++)
 	{
 		terminal.putChar('.');
 	}
+
+	terminal.setColor(cos::vga::Color::Red, cos::vga::Color::Black);
+
+	terminal.setPosition(10, 4);
+	terminal.writeString("Interrupts enabled: ");
+	terminal.writeString((cos::Interrupt::areEnabled() ? "true" : "false"));
+
+	terminal.setColor(cos::vga::Color::Magenta, cos::vga::Color::Black);
+
+	terminal.setPosition(10, 8);
+	terminal.writeString("cpu vendor: ");
+	terminal.writeString(cos::CpuID::getVendorString());
 }
