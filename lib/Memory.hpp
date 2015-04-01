@@ -7,8 +7,8 @@ namespace cos
 {
 	namespace mem
 	{
-		uint8 inport(uint16 port);
-		void outport(uint16 port, uint8 data);
+		uint32 farPeek(uint16 sel, void* off);
+		void farPoke(uint16 sel, void* off, uint8 v);
 	}
 }
 
