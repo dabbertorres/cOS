@@ -46,7 +46,41 @@ void kernelMain()
 
 	terminal.setColor(cos::vga::Color::Magenta, cos::vga::Color::Black);
 
-	terminal.setPosition(10, 8);
+	terminal.setPosition(10, 6);
 	terminal.writeString("cpu vendor: ");
 	terminal.writeString(cos::CpuID::getVendorString());
+	
+	terminal.setColor(cos::vga::Color::LightGrey, cos::vga::Color::Black);
+	
+	terminal.setPosition(10, 8);
+	terminal.writeString("cpu model: ");
+	terminal.writeString(cos::CpuID::getModelString());
+	
+	terminal.setPosition(0, 10);
+	
+	// ecx features
+	for(cos::uint32 i = 1; ; i <<= 1)
+	{
+		if(cos::CpuID::hasFeature(static_cast<cos::CpuID::FeatureECX>(i)))
+			terminal.putChar('y');
+		else
+			terminal.putChar('n');
+		
+		if(i == 1 << 30)
+			break;
+	}
+	
+	terminal.setPosition(0, 12);
+	
+	// edx features
+	for(cos::uint32 i = 1; ; i <<= 1)
+	{
+		if(cos::CpuID::hasFeature(static_cast<cos::CpuID::FeatureECX>(i)))
+			terminal.putChar('y');
+		else
+			terminal.putChar('n');
+		 
+		 if(i == 1u << 31)
+			 break;
+	}
 }
