@@ -149,11 +149,14 @@ namespace cos
 		void Terminal::moveCursor()
 		{
 			uint16 idx = row * WIDTH + column;
-
-			io::outport(0x3d4, 14);
-			io::outport(0x3d5, idx >> 8);
-			io::outport(0x3d4, 15);
+			
+			// low byte
+			io::outport(0x3d4, 0xf);
 			io::outport(0x3d5, idx);
+			
+			// high byte
+			io::outport(0x3d4, 0xe);
+			io::outport(0x3d5, idx >> 8);
 		}
 	}
 }
