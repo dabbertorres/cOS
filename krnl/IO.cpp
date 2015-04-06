@@ -14,14 +14,14 @@ namespace cos
 		uint16 in16(uint16 port)
 		{
 			uint16 ret;
-			asm volatile("inb %1, %0" : "=a"(ret) : "dN"(port));
+			asm volatile("inw %1, %0" : "=a"(ret) : "dN"(port));
 			return ret;
 		}
 		
 		uint32 in32(uint16 port)
 		{
 			uint32 ret;
-			asm volatile("inb %1, %0" : "=a"(ret) : "dN"(port));
+			asm volatile("inl %1, %0" : "=a"(ret) : "dN"(port));
 			return ret;
 		}
 
@@ -32,12 +32,12 @@ namespace cos
 
 		void out16(uint16 port, uint16 data)
 		{
-			asm volatile("outb %1, %0" : : "dN"(port), "a"(data));
+			asm volatile("outw %1, %0" : : "dN"(port), "a"(data));
 		}
 
 		void out32(uint16 port, uint32 data)
 		{
-			asm volatile("outb %1, %0" : : "dN"(port), "a"(data));
+			asm volatile("outl %1, %0" : : "dN"(port), "a"(data));
 		}
 
 		void wait()
