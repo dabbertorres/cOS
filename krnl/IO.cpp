@@ -4,14 +4,38 @@ namespace cos
 {
 	namespace io
 	{
-		uint8 inport(uint16 port)
+		uint8 in8(uint16 port)
 		{
 			uint8 ret;
 			asm volatile("inb %1, %0" : "=a"(ret) : "dN"(port));
 			return ret;
 		}
+		
+		uint16 in16(uint16 port)
+		{
+			uint16 ret;
+			asm volatile("inb %1, %0" : "=a"(ret) : "dN"(port));
+			return ret;
+		}
+		
+		uint32 in32(uint16 port)
+		{
+			uint32 ret;
+			asm volatile("inb %1, %0" : "=a"(ret) : "dN"(port));
+			return ret;
+		}
 
-		void outport(uint16 port, uint8 data)
+		void out8(uint16 port, uint8 data)
+		{
+			asm volatile("outb %1, %0" : : "dN"(port), "a"(data));
+		}
+
+		void out16(uint16 port, uint16 data)
+		{
+			asm volatile("outb %1, %0" : : "dN"(port), "a"(data));
+		}
+
+		void out32(uint16 port, uint32 data)
 		{
 			asm volatile("outb %1, %0" : : "dN"(port), "a"(data));
 		}

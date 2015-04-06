@@ -151,12 +151,12 @@ namespace cos
 			uint16 idx = row * WIDTH + column;
 			
 			// low byte
-			io::outport(0x3d4, 0xf);
-			io::outport(0x3d5, idx);
+			io::out8(0x3d4, 0xf);
+			io::out16(0x3d5, idx);
 			
 			// high byte
-			io::outport(0x3d4, 0xe);
-			io::outport(0x3d5, idx >> 8);
+			io::out8(0x3d4, 0xe);
+			io::out16(0x3d5, idx >> 8);
 		}
 	}
 }
