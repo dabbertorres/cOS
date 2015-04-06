@@ -251,7 +251,7 @@ namespace cos
 	uint32 CpuID::featuresEDX = 0;
 
 	uint16 CpuID::maxValueEAX = 0;
-	uint32 CpuID::maxExtValueEAX = 0;
+	uint32 CpuID::maxExtValueEAX = 0x80000000;
 	
 	uint32 CpuID::maxValueECX = 0;
 }
