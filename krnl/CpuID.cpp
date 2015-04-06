@@ -105,7 +105,7 @@ namespace cos
 			return false;
 		}
 
-		asm volatile("cpuid": "=a"(out[0]), "=b"(out[1]), "=c"(out[2]), "=d"(out[3]) : "a"(in));
+		asm volatile("cpuid" : "=a"(out[0]), "=b"(out[1]), "=c"(out[2]), "=d"(out[3]) : "a"(in));
 
 		return true;
 	}
