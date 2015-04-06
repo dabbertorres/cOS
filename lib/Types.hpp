@@ -10,10 +10,10 @@ namespace cos
 	using uint64 = unsigned long int;
 
 	// signed types
-	using int8 = char;
-	using int16 = short int;
-	using int32 = int;
-	using int64 = long int;
+	using int8 = signed char;
+	using int16 = signed short int;
+	using int32 = signed int;
+	using int64 = signed long int;
 }
 
 #endif // COS_TYPES_HPP
